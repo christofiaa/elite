@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экскурсия на фабрику Confetto</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="stylesheet" href="style2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            line-height: 1.7;
+            color: #333;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Анимированный фон с квадратами */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .square {
+            position: absolute;
+            background: rgba(192, 156, 94, 0.1);
+            border: 1px solid rgba(192, 156, 94, 0.2);
+            border-radius: 10px;
+            animation: float 15s infinite linear;
+        }
+
+        .square:nth-child(1) {
+            --size: 60px;
+            width: var(--size);
+            height: var(--size);
+            top: calc(10% + var(--random1, 0px));
+            left: calc(10% + var(--random2, 0px));
+            animation-delay: 0s;
+        }
+
+        .square:nth-child(2) {
+            --size: 40px;
+            width: var(--size);
+            height: var(--size);
+            top: calc(70% + var(--random3, 0px));
+            left: calc(80% + var(--random4, 0px));
+            animation-delay: -3s;
+        }
+
+        .square:nth-child(3) {
+            --size: 80px;
+            width: var(--size);
+            height: var(--size);
+            top: calc(50% + var(--random5, 0px));
+            left: calc(20% + var(--random6, 0px));
+            animation-delay: -6s;
+        }
+
+        .square:nth-child(4) {
+            --size: 50px;
+            width: var(--size);
+            height: var(--size);
+            top: calc(30% + var(--random7, 0px));
+            left: calc(60% + var(--random8, 0px));
+            animation-delay: -9s;
+        }
+
+        .square:nth-child(5) {
+            --size: 70px;
+            width: var(--size);
+            height: var(--size);
+            top: calc(80% + var(--random9, 0px));
+            left: calc(40% + var(--random10, 0px));
+            animation-delay: -12s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(calc(var(--move-x1, 20px)), calc(var(--move-y1, -15px))) rotate(90deg);
+            }
+            50% {
+                transform: translate(calc(var(--move-x2, -10px)), calc(var(--move-y2, 10px))) rotate(180deg);
+            }
+            75% {
+                transform: translate(calc(var(--move-x3, 15px)), calc(var(--move-y3, 5px))) rotate(270deg);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 42px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #C09C5E;
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(192, 156, 94, 0.05), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .form-container:hover::before {
+            left: 100%;
+        }
+
+        .form-section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(192, 156, 94, 0.2);
+        }
+
+        .form-section:last-of-type {
+            border-bottom: none;
+        }
+
+        .form-section h3 {
+            font-size: 24px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 25px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .form-section h3::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 20px;
+            background: #C09C5E;
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="email"],
+        input[type="password"],
+        input[type="datetime-local"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid rgba(192, 156, 94, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #C09C5E;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 0 3px rgba(192, 156, 94, 0.1);
+        }
+
+        fieldset {
+            border: 2px solid rgba(192, 156, 94, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        legend {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            padding: 0 10px;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .radio-item,
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #C09C5E;
+        }
+
+        .file-upload {
+            position: relative;
+        }
+
+        input[type="file"] {
+            padding: 10px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #C09C5E 0%, #a8864a 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(192, 156, 94, 0.3);
+        }
+
+        .form-note {
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            margin-top: 15px;
+        }
+
+        iframe {
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .map-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 32px;
+            }
+
+            .form-container {
+                padding: 25px;
+            }
+
+            .form-section h3 {
+                font-size: 20px;
+            }
+
+            iframe {
+                width: 100%;
+                height: auto;
+                min-height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <h1>Экскурсия на фабрику French Kiss</h1>
+            <p>Окунитесь в мир шоколадного волшебства!</p>
+        </div>
+
+        <div class="form-container">
+            
+            <form method="POST" action="/register" class="form-section">
+                <h3>Личная информация</h3>
+                
+                <div class="form-group">
+                    <label for="name">Ваше имя<span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Телефон <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Пароль для личного кабинета <span class="required">*</span></label>
+                    <input type="password" id="password" name="password" minlength="8" required>
+                </div>
+            </form>
+
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2250.3070266047325!2d37.57325117677725!3d55.666260973052204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54d18e35394f5%3A0x75d4010e2d0a8e78!2sFrench%20Kiss!5e0!3m2!1sru!2sru!4v1759858546284!5m2!1sru!2sru" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <form method="POST" action="/select-tour" class="form-section">
+                <h3>Выбор экскурсии</h3>
+                
+                <div class="form-group">
+                    <label for="tour-date">Дата и время экскурсии <span class="required">*</span></label>
+                    <input type="datetime-local" id="tour-date" name="tour-date" min="2024-01-01T09:00" max="2024-12-31T18:00" required>
+                </div>
+
+                <fieldset>
+                    <legend>Тип экскурсии <span class="required">*</span></legend>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="standard" name="tour-type" value="standard" checked required>
+                            <label for="standard">Стандартная (1 час) - 500 руб.</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="extended" name="tour-type" value="extended" required>
+                            <label for="extended">Расширенная (2 часа) - 800 руб.</label>
+                        </div>
+                        <div class="radio-item">
+                            <input type="radio" id="vip" name="tour-type" value="vip" required>
+                            <label for="vip">VIP с дегустацией (3 часа) - 1500 руб.</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="participants">Количество участников <span class="required">*</span></label>
+                    <select id="participants" name="participants" required>
+                        <option value="">Выберите количество</option>
+                        <option value="1">1 человек</option>
+                        <option value="2">2 человека</option>
+                        <option value="3">3 человека</option>
+                        <option value="4">4 человека</option>
+                        <option value="5">5 человек</option>
+                        <option value="6">6 человек</option>
+                    </select>
+                </div>
+            </form>
+
+            <form method="POST" action="/additional-info" class="form-section">
+                <h3>Дополнительная информация</h3>
+                
+                <fieldset>
+                    <legend>Выберите дополнительные опции</legend>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="photo" name="options" value="photo">
+                            <label for="photo">Фотосессия в шоколадной мастерской (+200 руб.)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="master-class" name="options" value="master-class">
+                            <label for="master-class">Мастер-класс по созданию шоколада (+500 руб.)</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="souvenir" name="options" value="souvenir">
+                            <label for="souvenir">Сувенирный набор конфет (+300 руб.)</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="form-group">
+                    <label for="preferences">Предпочтения по шоколаду</label>
+                    <select id="preferences" name="preferences" multiple size="3">
+                        <option value="milk">Молочный шоколад</option>
+                        <option value="dark">Тёмный шоколад</option>
+                        <option value="white">Белый шоколад</option>
+                        <option value="nuts">С орехами</option>
+                        <option value="fruits">С фруктами</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="comments">Комментарии и пожелания</label>
+                    <textarea id="comments" name="comments" rows="4" placeholder="Укажите дополнительную информацию, которая может быть важна для организации экскурсии..." maxlength="500" minlength="10"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="documents">Загрузите документы (если требуется)</label>
+                    <div class="file-upload">
+                        <input type="file" id="documents" name="documents" accept=".pdf,.jpg,.png">
+                    </div>
+                </div>
+            </form>
+
+            <form method="POST" action="/submit-all">
+                <div class="form-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="agree" name="agree" required>
+                        <label for="agree">Я согласен с правилами посещения экскурсии и обработкой персональных данных <span class="required">*</span></label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Забронировать экскурсию</button>
+                <p class="form-note">После отправки формы с вами свяжется наш менеджер для подтверждения бронирования</p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Случайные значения для анимации квадратов
+        document.addEventListener('DOMContentLoaded', function() {
+            const squares = document.querySelectorAll('.square');
+            
+            squares.forEach((square, index) => {
+                // Случайные смещения для начальной позиции
+                const randomOffset = Math.floor(Math.random() * 100) - 50;
+                square.style.setProperty(`--random${index + 1}`, `${randomOffset}px`);
+                
+                // Случайные значения для движения
+                const moveX1 = Math.floor(Math.random() * 40) - 20;
+                const moveY1 = Math.floor(Math.random() * 40) - 20;
+                const moveX2 = Math.floor(Math.random() * 40) - 20;
+                const moveY2 = Math.floor(Math.random() * 40) - 20;
+                const moveX3 = Math.floor(Math.random() * 40) - 20;
+                const moveY3 = Math.floor(Math.random() * 40) - 20;
+                
+                square.style.setProperty('--move-x1', `${moveX1}px`);
+                square.style.setProperty('--move-y1', `${moveY1}px`);
+                square.style.setProperty('--move-x2', `${moveX2}px`);
+                square.style.setProperty('--move-y2', `${moveY2}px`);
+                square.style.setProperty('--move-x3', `${moveX3}px`);
+                square.style.setProperty('--move-y3', `${moveY3}px`);
+            });
+        });
+    </script>
+</body>
+</html>

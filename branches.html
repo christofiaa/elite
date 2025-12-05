@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шоколадный бутик French Kiss</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="branches.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="always-scrolled"> 
+        <div class="container"> 
+            <a href="/" class="logo-link">
+                <img src="лого.png" alt="Логотип компании" class="logo1 logo-default">
+                <img src="лого2.png" alt="Логотип компании" class="logo1 logo-scrolled">
+            </a>
+
+            <label for="menuToggle" class="menu-toggle" aria-label="Открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        
+            <nav class="main-nav">
+                <a href="index.html">ГЛАВНАЯ</a>
+                <a href="shop.html">МАГАЗИН</a>
+                <a href="workshops.html">МАСТЕР-КЛАССЫ</a>
+                <a href="tours.html">ЭКСКУРСИИ</a>
+                <a href="branches.html">ФИЛИАЛЫ</a>
+            </nav>
+        </div>
+        <div class="notification-container">
+            <div class="notification-bell">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.93 6 11v5l-2 2v1h16v-1l-2-2z"/>
+                </svg>
+                <div class="notification-count">4</div>
+            </div>
+            <div class="notification-dropdown">
+                <div class="notification-header">Уведомления</div>
+                <ul class="notification-list">
+                    <li class="notification-item">
+                        <div class="notification-number">1</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Новая коллекция</div>
+                            <div class="notification-text">Весенние вкусы уже в бутиках</div>
+                        </div>
+                    </li>
+                    <li class="notification-item">
+                        <div class="notification-number">2</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Акция</div>
+                            <div class="notification-text">Скидка 15% на подарочные наборы</div>
+                        </div>
+                    </li>
+                    <li class="notification-item">
+                        <div class="notification-number">3</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Мастер-класс</div>
+                            <div class="notification-text">Новые даты доступны для записи</div>
+                        </div>
+                    </li>
+                    <li class="notification-item">
+                        <div class="notification-number">4</div>
+                        <div class="notification-content">
+                            <div class="notification-title">Новый филиал</div>
+                            <div class="notification-text">Открытие в ТРК Галерея</div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Секция с картой филиалов -->
+    <section class="branches-map-section first-section">
+        <h2 class="section-title">НАШИ ФИЛИАЛЫ</h2>
+        <div class="container">
+            <div class="map-layout">
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2250.3070266047325!2d37.57325117677725!3d55.666260973052204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46b54d18e35394f5%3A0x75d4010e2d0a8e78!2sFrench%20Kiss!5e0!3m2!1sru!2sru!4v1759858546284!5m2!1sru!2sru" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <div class="branches-sidebar">
+                    <div class="branches-list">
+                        <div class="branch-card" data-address="Невский пр., 28, Санкт-Петербург" data-branch="Невский проспект">
+                            <div class="branch-header">
+                                <h4>Невский проспект</h4>
+                                <div class="branch-badge">Флагманский</div>
+                            </div>
+                            <p class="branch-address">Невский пр., 28, 2-й этаж</p>
+                            <div class="branch-info">
+                                <div class="branch-hours">
+                                    <span>Пн-Пт: 10:00-22:00</span>
+                                    <span>Сб-Вс: 10:00-23:00</span>
+                                </div>
+                                <div class="branch-contacts">
+                                    <span>+7 (812) 123-45-67</span>
+                                    <span>nevsky@frenchkiss.ru</span>
+                                </div>
+                            </div>
+                            <div class="branch-features">
+                                <span class="feature-tag">Дегустация</span>
+                                <span class="feature-tag">Мастер-классы</span>
+                                <span class="feature-tag">Кофейня</span>
+                            </div>
+                            <button class="btn-route">Построить маршрут</button>
+                        </div>
+
+                        <div class="branch-card" data-address="Пресненская наб., 8, Москва" data-branch="Москва Сити">
+                            <div class="branch-header">
+                                <h4>Москва Сити</h4>
+                            </div>
+                            <p class="branch-address">Пресненская наб., 8, башня "Империя"</p>
+                            <div class="branch-info">
+                                <div class="branch-hours">
+                                    <span>Пн-Пт: 09:00-21:00</span>
+                                    <span>Сб-Вс: 10:00-20:00</span>
+                                </div>
+                                <div class="branch-contacts">
+                                    <span>+7 (495) 765-43-21</span>
+                                    <span>city@frenchkiss.ru</span>
+                                </div>
+                            </div>
+                            <div class="branch-features">
+                                <span class="feature-tag">Бизнес-ланчи</span>
+                                <span class="feature-tag">VIP-зал</span>
+                                <span class="feature-tag">Дегустации</span>
+                            </div>
+                            <button class="btn-route">Построить маршрут</button>
+                        </div>
+
+                        <div class="branch-card" data-address="ул. Производственная, 15, Санкт-Петербург" data-branch="Фабрика-магазин">
+                            <div class="branch-header">
+                                <h4>Фабрика-магазин</h4>
+                            </div>
+                            <p class="branch-address">ул. Производственная, 15, СПб</p>
+                            <div class="branch-info">
+                                <div class="branch-hours">
+                                    <span>Пн-Пт: 08:00-20:00</span>
+                                    <span>Сб: 10:00-18:00</span>
+                                </div>
+                                <div class="branch-contacts">
+                                    <span>+7 (812) 987-65-43</span>
+                                    <span>factory@frenchkiss.ru</span>
+                                </div>
+                            </div>
+                            <div class="branch-features">
+                                <span class="feature-tag">Прямые цены</span>
+                                <span class="feature-tag">Экскурсии</span>
+                                <span class="feature-tag">Свежая продукция</span>
+                            </div>
+                            <button class="btn-route">Построить маршрут</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-fabric">
+        <div class="container1">
+            <div class="img2">
+                <img src="boutique.jpg" alt="Бутик French Kiss">
+            </div>
+            <div class="blue-content">
+                <h2 class="beige-title">ЖДЕМ ВАС ЗА ПОДАРКАМИ СЕБЕ И БЛИЗКИМ</h2>
+                <p>French Kiss родился из искренней любви к искусству шоколада и желания дарить людям незабываемые моменты наслаждения. Наши шоколадные конфеты так полюбились гостям, что за ними приходили специально, особенно в преддверии праздников. Именно этот теплый прием и преданность ценителей послужили импульсом для создания шоколадного бутика French Kiss и его уютных филиалов в Петербурге, Москве и Париже.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="payment-methods">
+                    <span class="visa-text">VISA</span>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <div class="contacts">
+                    <div class="contact-item">
+                        <span class="city">CАНКТ-ПЕТЕРБУРГ</span>
+                        <span class="phone">+79250974562</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="city">МОСКВА</span>
+                        <span class="phone">+79032167739</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="city">РЕГИОНЫ</span>
+                        <span class="phone">+79250974562</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-section">
+                <div class="social-buttons">
+                    <h3 class="social-title">Мы в соцсетях</h3>
+                    <div class="social-buttons-container">
+                        <a href="#" class="social-btn instagram">
+                            <span class="social-text">Instagram</span>
+                        </a>
+                        <a href="#" class="social-btn vk">
+                            <span class="social-text">VK</span>
+                        </a>
+                        <a href="#" class="social-btn telegram">
+                            <span class="social-text">Telegram</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <div class="social">
+                    <div class="social-item">@schastyesweet</div>
+                    <div class="social-item">factory@schastye.com</div>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <div class="copyright">
+                    <div class="copyright-text">@Bégawa "Cescris", 2025. Все права защищены.</div>
+                    <div class="links">
+                        <a href="#">Условия продажи</a>
+                        <span> и </span>
+                        <a href="#">Конфиденциальность</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="branches.js"></script>
+</body>
+</html>
